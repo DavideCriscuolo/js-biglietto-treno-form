@@ -1,0 +1,25 @@
+.row {
+  background-color: #e6e6e6;
+  border-radius: 20px;
+  .uppTicket {
+    background-color: #1c39bb;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    h3 {
+      padding: 10px;
+      color: white;
+    }
+  }
+  .downTicket {
+    background-color: brown;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    h3 {
+      padding: 10px;
+      color: white;
+    }
+  }
+  .col {
+    height: 200px;
+  }
+}

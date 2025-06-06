@@ -13,7 +13,9 @@ va applicato uno sconto del 40% per gli over 65.
 const viewKmEl = document.querySelector(".jurneyKm");
 const viewFullNameEl = document.querySelector(".fullName");
 const viewPriceEl = document.querySelector(".priceTicket");
+const viewAgeEl = document.querySelector(".age");
 
+const viewTicket = document.querySelector(".row");
 //Il numero di chilometri da percorrere
 
 const inputKmUserEl = document.getElementById("inputKmUser");
@@ -34,15 +36,17 @@ function calcolaPrezzo(numeroKm, etauUser) {
   if (etauUser < 18) {
     return `Il costo del tuo biglietto ammonta a  ${bliglietoMino.toFixed(
       2
-    )} Euro`;
+    )} € abbiamo applicato lo sconto per i minorenni del 20%`;
   } else if (etauUser > 65) {
     return `Il costo del tuo biglietto ammonta a  ${bliglietoOver.toFixed(
       2
-    )} Euro`;
+    )} €, 
+     
+    abbiamo applicato lo sconto per gli over 65 del 40%`;
   } else {
-    return `La tua età non benificia di sconti e quindi il prezzp del biglietto è ${priceBiglietto.toFixed(
+    return `La tua età non benificia di sconti e quindi il prezzo del biglietto è ${priceBiglietto.toFixed(
       2
-    )}  `;
+    )} € `;
   }
 }
 
@@ -51,7 +55,8 @@ formEl.addEventListener("submit", function (e) {
   let inpuntAgeElValue = Number(inpuntAgeEl.value);
   let inputFullName = inputFullNameEl.value;
   let costoBligietto = calcolaPrezzo(inputKmUserElValue, inpuntAgeElValue);
-
+  viewTicket.classList.remove("d-none");
+  viewTicket.classList.add("d-flex");
   e.preventDefault();
   console.log(inpuntAgeElValue);
   console.log(inputKmUserElValue);
@@ -60,4 +65,5 @@ formEl.addEventListener("submit", function (e) {
 
   viewPriceEl.innerHTML = costoBligietto;
   viewFullNameEl.innerHTML = inputFullName;
+  viewAgeEl.innerHTML = `${inpuntAgeElValue} anni`;
 });
