@@ -11,13 +11,13 @@ va applicato uno sconto del 40% per gli over 65.
 
 */
 const viewKmEl = document.querySelector(".jurneyKm");
-
+const viewFullNameEl = document.querySelector(".fullName");
 const viewPriceEl = document.querySelector(".priceTicket");
 
 //Il numero di chilometri da percorrere
 
 const inputKmUserEl = document.getElementById("inputKmUser");
-
+const inputFullNameEl = document.getElementById("inputFullName");
 //Età del passeggero
 const inpuntAgeEl = document.getElementById("inpuntAge");
 
@@ -49,11 +49,15 @@ function calcolaPrezzo(numeroKm, etauUser) {
 formEl.addEventListener("submit", function (e) {
   let inputKmUserElValue = Number(inputKmUserEl.value);
   let inpuntAgeElValue = Number(inpuntAgeEl.value);
+  let inputFullName = inputFullNameEl.value;
   let costoBligietto = calcolaPrezzo(inputKmUserElValue, inpuntAgeElValue);
+
   e.preventDefault();
   console.log(inpuntAgeElValue);
   console.log(inputKmUserElValue);
   console.log(costoBligietto);
   viewKmEl.innerHTML = `Hai impostato ${inputKmUserElValue} km`;
+
   viewPriceEl.innerHTML = costoBligietto;
+  viewFullNameEl.innerHTML = inputFullName;
 });
