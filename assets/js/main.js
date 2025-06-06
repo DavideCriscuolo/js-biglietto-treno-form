@@ -13,14 +13,16 @@ va applicato uno sconto del 40% per gli over 65.
 
 //Il numero di chilometri da percorrere
 
-let choiseKmUser = Number(prompt("Quanti km vuoi percorrere?"));
-
-console.log(choiseKmUser);
+const inputKmUserEl = document.getElementById("inputKmUser");
+console.log(inputKmUserEl);
+const inputKmUserElValue = inputKmUserEl.value;
 
 //Età del passeggero
-let ageUser = Number(prompt("Quanti anni hai?"));
-console.log(ageUser);
+const inpuntAgeEl = document.getElementById("inpuntAge");
+console.log(inpuntAgeEl);
+const inpuntAgeElValue = inpuntAgeEl.value;
 
+const formEl = document.querySelector("form");
 //calocare il prezzo del biglietto
 
 function calcolaPrezzo(numeroKm, etauUser) {
@@ -35,10 +37,15 @@ function calcolaPrezzo(numeroKm, etauUser) {
   } else if (etauUser > 65) {
     return bliglietoOver.toFixed(2);
   } else {
-    return `La tua èta non benifica di sconti e quindi il prezzp del biglietto è ${priceBiglietto.toFixed(
+    return `La tua èta non benificia di sconti e quindi il prezzp del biglietto è ${priceBiglietto.toFixed(
       2
     )}  `;
   }
 }
-
-console.log(calcolaPrezzo(choiseKmUser, ageUser));
+let costoBligietto = calcolaPrezzo(inputKmUserElValue, inpuntAgeElValue);
+formEl.addEventListener("submit", function (e) {
+  e.preventDefault();
+  console.log(inpuntAgeElValue);
+  console.log(inputKmUserElValue);
+  console.log(costoBligietto);
+});
