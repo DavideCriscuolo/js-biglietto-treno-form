@@ -10,6 +10,9 @@ va applicato uno sconto del 20% per i minorenni
 va applicato uno sconto del 40% per gli over 65.
 
 */
+const viewKmEl = document.querySelector(".jurneyKm");
+
+const viewPriceEl = document.querySelector(".priceTicket");
 
 //Il numero di chilometri da percorrere
 
@@ -29,11 +32,15 @@ function calcolaPrezzo(numeroKm, etauUser) {
   const scontoOver = (priceBiglietto * 40) / 100;
   const bliglietoOver = priceBiglietto - scontoOver;
   if (etauUser < 18) {
-    return bliglietoMino.toFixed(2);
+    return `Il costo del tuo biglietto ammonta a  ${bliglietoMino.toFixed(
+      2
+    )} Euro`;
   } else if (etauUser > 65) {
-    return bliglietoOver.toFixed(2);
+    return `Il costo del tuo biglietto ammonta a  ${bliglietoOver.toFixed(
+      2
+    )} Euro`;
   } else {
-    return `La tua èta non benificia di sconti e quindi il prezzp del biglietto è ${priceBiglietto.toFixed(
+    return `La tua età non benificia di sconti e quindi il prezzp del biglietto è ${priceBiglietto.toFixed(
       2
     )}  `;
   }
@@ -47,4 +54,6 @@ formEl.addEventListener("submit", function (e) {
   console.log(inpuntAgeElValue);
   console.log(inputKmUserElValue);
   console.log(costoBligietto);
+  viewKmEl.innerHTML = `Hai impostato ${inputKmUserElValue} km`;
+  viewPriceEl.innerHTML = costoBligietto;
 });
